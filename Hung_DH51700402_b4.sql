@@ -174,3 +174,38 @@ begin
 end
 
 select * from BnagLuongThang(2)
+
+--6
+alter function tinhLuongNV()
+returns @BangLuong table (MaNV char(5), TenNV nchar(30),NgayThang datetime,Luong int)
+as
+begin 
+	Insert into @BangLuong
+	Select * from BnagLuongThang(1)
+	union
+	Select * from BnagLuongThang(2)
+	union
+	Select * from BnagLuongThang(3)
+	union
+	Select * from BnagLuongThang(4)
+	union
+	Select * from BnagLuongThang(5)
+	union
+	Select * from BnagLuongThang(6)
+	union
+	Select * from BnagLuongThang(7)
+	union
+	Select * from BnagLuongThang(8)
+	union
+	Select * from BnagLuongThang(9)
+	union
+	Select * from BnagLuongThang(10)
+	union
+	Select * from BnagLuongThang(11)
+	union
+	Select * from BnagLuongThang(12)
+	return
+end
+
+select *
+from tinhLuongNV()
